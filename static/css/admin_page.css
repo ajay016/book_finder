@@ -1,0 +1,97 @@
+@import url("admin_page.css");
+
+.card-div{
+    border-radius: 20px;
+    /* box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1),14px 10px 15px -3px rgba(0,0,0,0.1); */
+}
+
+.card-div span{
+    font-size: 1.5rem;
+}
+
+.card{
+    height: 350px;
+    padding: 0 35px;
+    border-radius: 20px;
+    border: none;
+}
+
+.card-inner{
+    position: relative;
+    border-radius: inherit;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1),14px 10px 15px -3px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card-image{
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    height: 300px;
+    /* box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1),14px 10px 15px -3px rgba(0,0,0,0.1); */
+}
+
+.card-image img{
+    border-radius: inherit;
+    width: 100%;
+    height: 300px;
+}
+
+.card-text{
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background-color: rgb(61, 60, 60);
+    color: #ecebeb;
+    width: 100%;
+}
+
+.card-text span{
+    font-size: 22px;
+}
+
+.card-overlay{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background-color: rgba(117, 107, 107, 0.7);
+    opacity: 0;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.card-inner:hover{
+    cursor: pointer;
+    transform: scale(1.12);
+    transition: 0.3s;
+    z-index: 99;
+}
+
+.card-inner:hover .card-overlay{
+    top: 0;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.btn-div a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.btn-add-div{
+    margin-top: 65px;
+}
+
+.btn-updates{
+    width: 100%;
+    height: 50px;
+    color: #ffffff;
+    border-color: transparent;
+    background-color: rgb(61, 60, 60);
+}
+
+.btn-updates:hover{
+    color: rgb(172, 172, 172) !important;
+    background: rgb(34, 34, 34) !important;
+}

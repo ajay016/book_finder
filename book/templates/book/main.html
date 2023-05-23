@@ -11,14 +11,19 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    {% block style %}
+
+    {% endblock style %}
 
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg custom-navbar">
+        <nav id="custom-nav" class="navbar navbar-expand-lg custom-navbar">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="">Book Finder</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,10 +33,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Books</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="">Action</a></li>
+                                <li><a class="dropdown-item" href="">Another action</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="">Something else here</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -75,14 +80,11 @@
         </nav>
     </header>
 
-    <div class="background-image-div col-12">
-        <img src="{% static 'images/book_cover.jpg' %}" alt="" class="cover-image">
-        <div class="heading-text-div text-center mx-auto">
-            <h1 class="heading-text text-center mx-auto">Find Your Favorite Books with Book Finder</h1>
-        </div>
-    </div>
+    {% block content  %}
+
+    {% endblock content  %}
+
     
-    {% comment %} <img class="book-cover" src="{% static "images/book_cover.jpg" %}" alt="My image"/> {% endcomment %}
     <footer>
         <!-- place footer here -->
     </footer>
@@ -93,6 +95,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var currentPage = window.location.pathname
+
+            if(currentPage === '/'){
+                $('#custom-nav').addClass('home-page-navbar')
+            }
+            else{
+                $('#custom-nav').addClass('other-page-navbar')
+            }
+        });
     </script>
 </body>
 

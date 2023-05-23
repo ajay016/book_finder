@@ -1,0 +1,25 @@
+{% extends 'book/main.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_book.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center py-5">
+            <div class="add-book-heading col-12 d-flex justify-content-center">
+                <h4><span>Add book</span></h4>
+            </div>
+
+            <div class="book-info">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

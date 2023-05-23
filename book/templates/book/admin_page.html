@@ -1,0 +1,155 @@
+{% extends 'book/main.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/admin_page.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row admin-row justify-content-center py-5">
+            <div class="col-lg-8 col-md-8 col-12">
+                <div class="card-div">
+                    <div class="row pt-3 px-3 mx-2">
+                        <div class="col-12 justify-content-center d-flex">
+                            <h5><span>Add and Update Books, Authors, Genre and Customers</span></h5>
+                        </div>
+                    </div>
+
+                    <div class="row p-5 mx-2">
+                        <div class="card col-lg-6 col-md-10 col-12 mb-5">
+                            <div class="card-inner col-12">
+                                <div class="card-image">
+                                    <img src="{% static 'images/add_book.jpg' %}" alt="">
+                                </div>
+                                <div class="card-text pt-3 justify-content-center d-flex">
+                                    <p><span>Add and Update Books</span></p>
+                                </div>
+
+                                <!--Hover effect starts-->
+
+                                <div class="card-overlay">
+                                    <div class="overlay col-12">
+                                        <div class="btn-div btn-add-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button"><a href="{% url 'add_book' %}">Add</a></button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Update</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto">
+                                            <button class="btn btn-updates" type="button">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Hover effect ends-->
+                            </div>
+                        </div>
+
+                        <div class="card col-lg-6 col-md-10 col-12">
+                            <div class="card-inner col-12">
+                                <div class="card-image">
+                                    <img src="{% static 'images/add-author.jpg' %}" alt="">
+                                </div>
+                                <div class="card-text pt-3 justify-content-center d-flex">
+                                    <p><span>Add and Update Authors</span></p>
+                                </div>
+
+                                <!--Hover effect starts-->
+
+                                <div class="card-overlay">
+                                    <div class="overlay col-12">
+                                        <div class="btn-div btn-add-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button"><a href="{% url 'add_book' %}"></a></button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Update</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto">
+                                            <button class="btn btn-updates" type="button">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Hover effect ends-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row p-5 mx-2">
+                        <div class="card col-lg-6 col-md-10 col-12 mb-5">
+                            <div class="card-inner col-12">
+                                <div class="card-image">
+                                    <img src="{% static 'images/add-genre.jpg' %}" alt="">
+                                </div>
+                                <div class="card-text pt-3 justify-content-center d-flex">
+                                    <p><span>Add and Update Genres</span></p>
+                                </div>
+
+                                <!--Hover effect starts-->
+
+                                <div class="card-overlay">
+                                    <div class="overlay col-12">
+                                        <div class="btn-div btn-add-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Add</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Update</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto">
+                                            <button class="btn btn-updates" type="button">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Hover effect ends-->
+                            </div>
+                        </div>
+
+                        <div class="card col-lg-6 col-md-10 col-12 mb-5">
+                            <div class="card-inner col-12">
+                                <div class="card-image">
+                                    <img src="{% static 'images/add-user.png' %}" alt="">
+                                </div>
+                                <div class="card-text pt-3 justify-content-center d-flex">
+                                    <p><span>Add and Update Customers</span></p>
+                                </div>
+
+                                <!--Hover effect starts-->
+
+                                <div class="card-overlay">
+                                    <div class="overlay col-12">
+                                        <div class="btn-div btn-add-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Add</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto pb-2">
+                                            <button class="btn btn-updates" type="button">Update</button>
+                                        </div>
+
+                                        <div class="btn-div col-8 mx-auto">
+                                            <button class="btn btn-updates" type="button">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Hover effect ends-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+

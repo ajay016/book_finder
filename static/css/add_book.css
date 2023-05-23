@@ -1,0 +1,11 @@
+@import url("admin_page.css");
+
+.add-book-heading{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.book-info{
+    padding-left: 200px;
+    padding-right: 200px;
+}

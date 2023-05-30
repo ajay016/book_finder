@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/add_book.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_author.css' %}">
 {% endblock style %}
 
 {% block content %}
@@ -27,7 +27,7 @@
                 <div class="row justify-content-center">
                     <form action="" method="POST" id="add-form">
                         {% csrf_token %}
-                        <div class="col-12 all-cards">
+                        {% comment %} <div class="col-12 all-cards">
                         
                             <div class="row px-3 mb-3">
                                 <div class="col-12">
@@ -38,69 +38,8 @@
                                 </div>
                             </div>
 
-                            <div class="row px-3 mb-3 dynamic-author">                              
-                                <div class="col-12">
-                                    <label for="" class="form-label px-1 mt-3">Authors' Name</label>
-                                </div>
-                                <div class="row pe-0 mb-3">
-                                    <div class="col-lg-11 dynamic-input-field">
-                                        {{ form.authors }}
-                                    </div>
-                                    <div class="col-lg-1 pe-0 dynamic-add-remove-btns">
-                                        <button class="btn btn-add-books btn-dynamic-add" type="button"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row px-3 mb-3 dynamic-genre">
-                                <div class="col-12">
-                                    <label for="" class="form-label px-1 mt-3">Genre</label>
-                                </div>
-                                <div class="row pe-0 mb-3">
-                                    <div class="col-lg-11 dynamic-input-field">
-                                        {{ form.genres }}
-                                    </div>
-                                    <div class="col-lg-1 pe-0 dynamic-add-remove-btns">
-                                        <button class="btn btn-add-books btn-dynamic-add" type="button"><i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row px-3 mb-3">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label for="" class="form-label px-1 mt-3">No. of Copies</label>
-                                        </div>
-                                        <div class="col-12">
-                                            {{ form.no_of_copies }}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label for="" class="form-label px-1 mt-3">Status</label>
-                                        </div>
-                                        <div class="col-12">
-                                            {{ form.status }}
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-
-                            <div class="row px-3 mb-3">
-                                <div class="col-12">
-                                    <label for="" class="form-label px-1 mt-3">Book Description</label>
-                                </div>
-                                <div class="col-12">
-                                    {{ form.description }}
-                                </div>
-                            </div>
-
-                        </div>
+                        </div> {% endcomment %}
+                        {{form.as_p}}
                         <div class="col-12">
                             <button type="submit" class="btn btn-general">Save</button>
                         </div>
@@ -157,7 +96,7 @@
             $('.dynamic-author').on('click', '.btn-dynamic-remove', function(e) {
                 e.preventDefault();
                 $(this).parent().parent().remove(); // add div 'addAuthor' after the clicked add button
-                              
+                            
             });
 
             $('.dynamic-genre').on('click', '.btn-dynamic-add', function(e) {
@@ -184,7 +123,7 @@
             $('.dynamic-genre').on('click', '.btn-dynamic-remove', function(e) {
                 e.preventDefault();
                 $(this).parent().parent().remove(); // add div 'addAuthor' after the clicked add button
-                              
+                            
             });
 
             $('#add-form').submit(function(e){
@@ -214,7 +153,7 @@
 
                             setTimeout(function() {
                                 $('#add-success-modal').removeClass('add-success-show');
-                              }, 2000);
+                            }, 2000);
                         }
                     },
                     error: function(xhr, status, error) {

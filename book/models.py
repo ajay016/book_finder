@@ -10,7 +10,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.name or ''
     
 
 class Author(models.Model):
@@ -18,7 +18,7 @@ class Author(models.Model):
     books = models.ManyToManyField(Book)
 
     def __str__(self):
-        return self.name
+        return self.name or ''
     
 
 class Genre(models.Model):
@@ -26,4 +26,4 @@ class Genre(models.Model):
     books = models.ManyToManyField(Book)
     
     def __str__(self):
-        return self.name
+        return self.name or ''

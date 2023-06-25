@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.serializers import serialize
 from .forms import *
 
 def home(request):
@@ -34,7 +35,8 @@ def add_book(request):
         if form.is_valid():
             book = form.save(commit=False)
             authors = request.POST.getlist('authors')
-            print('Authors list: ', authors)
+            print('Authors:', authors)
+
             book.save()
 
             # authors_list = []
@@ -55,6 +57,24 @@ def add_book(request):
 
     context = {'form': form}
     return render(request, 'book/add_book.html', context)
+
+def ajax_test(request):
+    books = Book.objects.all()
+    serialized_books = serialize('json', books)
+    
+    return JsonResponse({'books': serialized_books}, safe=False)
+
+def book_search(request):
+    print(request.GET)
+    search = request.GET.get('term')
+    payload = []
+    if search:
+        objs = Book.objects.filter(name__icontains=search)
+        for obj in objs:
+            payload.append(obj.name)
+
+
+    return JsonResponse(payload, safe=False)
 
 def add_author(request):
     form = AddAuthorForm()

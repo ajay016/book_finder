@@ -6,16 +6,16 @@
 {% endblock style %}
 
 {% block content %}
-
-    <div class="container">
-        <div id="add-success-modal" class="add-success-modal">
-            <i id="close" class="fa-solid fa-xmark fa-2xl"></i>
-            <img src="{% static 'images/tick.png' %}" alt="">
-            <div class="add-success-text">
-                <h2 class="mt-5">Book Added</h2>
-                <h2>Successfully</h2>
-            </div>
+    <div id="add-success-modal" class="add-success-modal">
+        <i id="close" class="fa-solid fa-xmark fa-2xl"></i>
+        <img src="{% static 'images/tick.png' %}" alt="">
+        <div class="add-success-text">
+            <h2 class="mt-5">Book Added</h2>
+            <h2>Successfully</h2>
         </div>
+    </div>
+    <div class="container">
+        
         
 
         <div class="row justify-content-center py-5">
@@ -102,7 +102,7 @@
 
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-general">Save</button>
+                            <button id="add-book-btn" type="submit" class="btn btn-general">Save</button>
                         </div>
                     </form>
                 </div>
@@ -129,16 +129,14 @@
             //    $(this).parent().after(inputField, addButton); // add these two divs 'inputField, addButton' after the clicke add button
             //    $(this).parent().prepend(removeButton);        //add the remove button before the clicked 'add button'. If we used 'append' we would have removed the first child
             //    addButtonParent.children().eq(1).remove();     //remove the second element of the parent div (remove the button)                
-            //});   
-
-        });
-
-        $('.dynamic-author').on('click', '.btn-dynamic-add', function(e) {
+            //});
+            
+            $('.dynamic-author').on('click', '.btn-dynamic-add', function(e) {
                 e.preventDefault();
                 var inputField = $('<div class="col-9 mt-3"><input type="text" name="authors" class="form-control"></div>');
                 var addButton = $('<div class="col-3 mt-3"><button class="btn btn-add-books btn-dynamic-add" type="button">Add another Author</button></div>');
                 var removeButton = $('<button class="btn btn-remove-books btn-dynamic-remove" type="button"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>');
-
+    
                 var addAuthor = $(`<div class="row pe-0 mb-3">
                                         <div class="col-lg-11 dynamic-input-field">
                                             <input type="text" name="authors" class="form-control">
@@ -148,24 +146,24 @@
                                         </div>
                                     </div>`)
                 var addButtonParent = $(this).parent()
-
+    
                 $(this).parent().parent().after(addAuthor); // add div 'addAuthor' after the clicke add button
                 $(this).parent().prepend(removeButton);        //add the remove button before the clicked 'add button'. If we used 'append' we would have removed the first child
-                addButtonParent.children().eq(1).remove();     //remove the second element of the parent div (remove the button)                
-            });
-
-            $('.dynamic-author').on('click', '.btn-dynamic-remove', function(e) {
-                e.preventDefault();
-                $(this).parent().parent().remove(); // add div 'addAuthor' after the clicked add button
-                              
-            });
-
+                addButtonParent.children().eq(1).remove();     //remove the second element of the parent div (remove the button)
+                
+                $('.dynamic-author').on('click', '.btn-dynamic-remove', function(e) {
+                    e.preventDefault();
+                    $(this).parent().parent().remove(); // add div 'addAuthor' after the clicked add button
+                                    
+                });
+            }); 
+    
             $('.dynamic-genre').on('click', '.btn-dynamic-add', function(e) {
                 e.preventDefault();
                 var inputField = $('<div class="col-9 mt-3"><input type="text" name="genres" class="form-control"></div>');
                 var addButton = $('<div class="col-3 mt-3"><button class="btn btn-add-books btn-dynamic-add" type="button">Add another Author</button></div>');
                 var removeButton = $('<button class="btn btn-remove-books btn-dynamic-remove" type="button"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>');
-
+    
                 var addAuthor = $(`<div class="row pe-0 mb-3">
                                         <div class="col-lg-11 dynamic-input-field">
                                             <input type="text" name="genres" class="form-control">
@@ -175,24 +173,26 @@
                                         </div>
                                     </div>`)
                 var addButtonParent = $(this).parent()
-
+    
                 $(this).parent().parent().after(addAuthor); // add div 'addAuthor' after the clicke add button
                 $(this).parent().prepend(removeButton);        //add the remove button before the clicked 'add button'. If we used 'append' we would have removed the first child
-                addButtonParent.children().eq(1).remove();     //remove the second element of the parent div (remove the button)                
-            });
-
-            $('.dynamic-genre').on('click', '.btn-dynamic-remove', function(e) {
+                addButtonParent.children().eq(1).remove();     //remove the second element of the parent div (remove the button)  
+                
+                $('.dynamic-genre').on('click', '.btn-dynamic-remove', function(e) {
                 e.preventDefault();
                 $(this).parent().parent().remove(); // add div 'addAuthor' after the clicked add button
-                              
+                                
+                });
+    
             });
-
+    
+            
             $('#add-form').submit(function(e){
                 e.preventDefault()
-
+    
                 var formData = $(this).serialize()
                 console.log('formData: ', formData)
-
+    
                 $.ajax({
                     url: '/add_book',
                     method: 'POST',
@@ -211,10 +211,10 @@
                         if(data.success === 'success'){
                             $('#add-success-modal').addClass('add-success-show')
                             console.log('data:', data);
-
+    
                             setTimeout(function() {
                                 $('#add-success-modal').removeClass('add-success-show');
-                              }, 2000);
+                                }, 2000);
                         }
                     },
                     error: function(xhr, status, error) {
@@ -222,12 +222,46 @@
                         console.log(error);
                     }
                 });
+
                 $('#close').click(function(){
                     $('#add-success-modal').removeClass('add-success-show')
                     console.log('clicked')
                 })
-
+    
             });
+            //var outside_ajax_book;
+
+            var return_first;
+
+            function callbackData(response) {
+                return_first = response;
+
+                return return_first
+                // Use return_first variable here or call another function passing return_first as an argument
+            }
+            console.log('Outside ajax Books: ', return_first)
+
+            $.ajax({
+                url: '/ajax_test',
+                dataType: 'json',
+                
+                success: function(data){
+                    var book_data = data
+                    outside_ajax_book = data
+                    console.log('Inside ajax Books: ', book_data);
+                    callbackData(data)
+
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error response, if needed
+                    console.log('error');
+                }
+            });
+
+            //console.log('Outside ajax Books: ', return_first)
+
+        });
+
             
 
     </script>
